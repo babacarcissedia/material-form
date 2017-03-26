@@ -1,0 +1,30 @@
+{
+    "name": "bcdbuddy/material-form",
+    "version": "dev-master",
+    "description": "A basic framework agnostic form building using materialize css framework package with a few extra niceties like remembering old input and retrieving error messages. Built on AdamWathan/BootForms",
+    "authors": [
+        {
+            "name": "Babacar Cissé DIA",
+            "email": "bcdbuddy@outlook.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "illuminate/support": "4.*",
+        "phpunit/phpunit": "3.7.*",
+        "mockery/mockery": "~0.9",
+        "satooshi/php-coveralls": "^1.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "bcdbuddy\\MaterialForm": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": ["tests/"]
+    },
+    "minimum-stability": "dev"
+}
