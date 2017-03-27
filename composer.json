@@ -1,6 +1,6 @@
 {
     "name": "bcdbuddy/material-form",
-    "version": "dev-master",
+    "version": "0.1",
     "description": "A basic framework agnostic form building using materialize css framework package with a few extra niceties like remembering old input and retrieving error messages. Built on AdamWathan/BootForms",
     "authors": [
         {

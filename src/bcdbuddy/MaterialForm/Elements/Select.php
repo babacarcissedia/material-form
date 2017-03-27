@@ -5,14 +5,12 @@ namespace bcdbuddy\MaterialForm\Elements;
 class Select extends InputField
 {
     protected $options;
-
     protected $selected;
 
     public function __construct($label, $name, $options = [])
     {
         parent::__construct($label, $name);
         $this->setOptions($options);
-        $this->label = $label;
     }
 
     public function select($option)
@@ -41,7 +39,7 @@ class Select extends InputField
                 $result .= $addon;
             }
             $result .= sprintf('<select%s>', $this->renderAttributes());
-                $result .= '<option value="" disabled selected>'. $this->label .'</option>';
+                $result .= '<option value="" disabled selected>'. $this->label_string .'</option>';
                 $result .= $this->renderOptions();
             $result .= '</select>';
             $result .= $this->label;

@@ -4,9 +4,6 @@ namespace bcdbuddy\MaterialForm\Elements;
 
 class Text extends InputField
 {
-    public $label;
-
-
     protected $attributes = [
         'type' => 'text',
     ];
@@ -14,7 +11,6 @@ class Text extends InputField
     public function placeholder($placeholder)
     {
         $this->setAttribute('placeholder', $placeholder);
-
         return $this;
     }
 

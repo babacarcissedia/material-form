@@ -11,6 +11,7 @@ use bcdbuddy\MaterialForm\Elements\Email;
 use bcdbuddy\MaterialForm\Elements\File;
 use bcdbuddy\MaterialForm\Elements\FormOpen;
 use bcdbuddy\MaterialForm\Elements\Hidden;
+use bcdbuddy\MaterialForm\Elements\InputField;
 use bcdbuddy\MaterialForm\Elements\Label;
 use bcdbuddy\MaterialForm\Elements\Password;
 use bcdbuddy\MaterialForm\Elements\RadioButton;
@@ -324,12 +325,12 @@ class MaterialForm
         return $switch;
     }
 
-    private function renderErrorIfAny($element, $name)
+    private function renderErrorIfAny(InputField $element, $name)
     {
         if ($this->hasError($name)) {
             $element->addClass("invalid");
-            $element->label->attribute("data-error", $this->getError($name));
-            $element->label->addClass('active');
+            $element->getLabel()->attribute("data-error", $this->getError($name))
+                ->addClass('active');
         }
     }
 }

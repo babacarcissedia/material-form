@@ -4,7 +4,8 @@ namespace bcdbuddy\MaterialForm\Elements;
 
 class InputField extends Input{
 
-    public $label;
+    protected $label;
+    protected $label_string;
     protected $addons = [];
 
     function __construct($label, $name)
@@ -13,6 +14,7 @@ class InputField extends Input{
         $this->attribute("id", $name);
         $this->label = new Label($label);
         $this->label->attribute("for", $name);
+        $this->label_string = $label;
     }
 
     public function render()
@@ -41,5 +43,11 @@ class InputField extends Input{
         $this->addon($icon);
         return $this;
     }
-    
+
+
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
 }
