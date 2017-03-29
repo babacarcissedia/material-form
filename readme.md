@@ -226,18 +226,20 @@ MaterialForm::close()
 ## Advance usages
 ```php
 {!! MaterialForm::open() !!}
-    {!! MaterialForm::text("Last name", "last_name")->data("length", 10) !!}
-    {!! MaterialForm::email("Email", "email") !!}
-    {!! MaterialForm::password("Password", "password") !!}
-    {!! MaterialForm::file("File", "file")->placeholder("some file to upload") !!}
-    {!! MaterialForm::checkbox("Remember", "remember")->checked() !!}
-    {!! MaterialForm::checkbox("HTML", "html")->disabled()->checked() !!}
-    {!! MaterialForm::checkbox("Remember filled-in", "remember filled-in")->addClass("filled-in")->checked() !!}
-    {!! MaterialForm::checkbox("Safe", "safe")->addClass("filled-in")->disabled()->checked() !!}
-    {!! MaterialForm::checkbox("Save", "save")->addClass("filled-in")->disabled()!!}
-    {!! MaterialForm::switchCheck("On", "Off", "state") !!}
-    {!! MaterialForm::submit("Send")->icon("send") !!}
-{!! MaterialForm::close() !!}
+		{!! MaterialForm::text("Last name", "last_name")->data("length", 10) !!}
+		{!! MaterialForm::email("Email", "email") !!}
+		{!! MaterialForm::password("Password", "password") !!}
+		{!! MaterialForm::file("File", "file")->placeholder("some file to upload") !!}
+		{!! MaterialForm::checkbox("Remember", "remember")->checked() !!}
+		{!! MaterialForm::checkbox("HTML", "html")->disabled()->checked() !!}
+		{!! MaterialForm::checkbox("Remember filled-in", "remember filled-in")->addClass("filled-in")->checked() !!}
+		{!! MaterialForm::checkbox("Safe", "safe")->addClass("filled-in")->disabled()->checked() !!}
+		{!! MaterialForm::checkbox("Save", "save")->addClass("filled-in")->disabled()!!}
+		{!! MaterialForm::switchCheck("On", "Off", "state") !!}
+		{!! MaterialForm::select("One Select", "one_select", ["1", "2", "5", "10"]) !!}
+		{!! MaterialForm::select("One icon Select", "one_icon_select", ["1", "2", "5", "10"], ["http://lorempicsum.com/futurama/350/200/1", "http://lorempicsum.com/futurama/350/200/2", "http://lorempicsum.com/futurama/350/200/5", "http://lorempicsum.com/futurama/350/200/6"])->left() !!} // or right()
+		{!! MaterialForm::submit("Send")->icon("send") !!}
+		{!! MaterialForm::close() !!}
 ```
 
 ## Output

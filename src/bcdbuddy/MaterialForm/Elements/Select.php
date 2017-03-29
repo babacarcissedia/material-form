@@ -6,11 +6,17 @@ class Select extends InputField
 {
     protected $options;
     protected $selected;
+    protected $icons;
+    protected $icon_class;
 
-    public function __construct($label, $name, $options = [])
+    public function __construct($label, $name, $options = [], $icons = false)
     {
         parent::__construct($label, $name);
         $this->setOptions($options);
+        $this->icons = $icons;
+        $this->attributes = array_merge($this->attributes, [
+            "class" => ($this->icons)? "icons": ""
+        ]);
     }
 
     public function select($option)
@@ -38,11 +44,10 @@ class Select extends InputField
             foreach ($this->addons as $addon) {
                 $result .= $addon;
             }
-            $result .= sprintf('<select%s>', $this->renderAttributes());
+            $result .= sprintf('<select %s>', $this->renderAttributes());
                 $result .= '<option value="" disabled selected>'. $this->label_string .'</option>';
                 $result .= $this->renderOptions();
             $result .= '</select>';
-            $result .= $this->label;
         $result .= '</div>';
 
         return $result;
@@ -52,23 +57,23 @@ class Select extends InputField
     {
         list($values, $labels) = $this->splitKeysAndValues($this->options);
 
-        $tags = array_map(function ($value, $label) {
+        $tags = array_map(function ($value, $label, $icon) {
             if (is_array($label)) {
-                return $this->renderOptGroup($value, $label);
+                return $this->renderOptGroup($value, $label, $icon);
             }
-            return $this->renderOption($value, $label);
-        }, $values, $labels);
+            return $this->renderOption($value, $label, $icon);
+        }, $values, $labels, $this->icons);
 
         return implode($tags);
     }
 
-    protected function renderOptGroup($label, $options)
+    protected function renderOptGroup($label, $options, $icons)
     {
         list($values, $labels) = $this->splitKeysAndValues($options);
 
-        $options = array_map(function ($value, $label) {
-            return $this->renderOption($value, $label);
-        }, $values, $labels);
+        $options = array_map(function ($value, $label, $icon) {
+            return $this->renderOption($value, $label, $icon);
+        }, $values, $labels, $icons);
 
         return implode([
             sprintf('<optgroup label="%s">', $label),
@@ -77,13 +82,20 @@ class Select extends InputField
         ]);
     }
 
-    protected function renderOption($value, $label)
+    protected function renderOption($value, $label, $icon)
     {
         return implode([
-            sprintf('<option value="%s"%s>', $value, $this->isSelected($value) ? ' selected' : ''),
+            sprintf('<option %s class="%s" value="%s"%s>', $this->renderDataIcon($icon), $this->icon_class, $value, $this->isSelected($value) ? ' selected' : ''),
             $label,
             '</option>',
         ]);
+    }
+
+    private function renderDataIcon($icon)
+    {
+        if ($this->icons) {
+            return sprintf(' data-icon="%s"', $icon);
+        }
     }
 
     protected function isSelected($value)
@@ -121,4 +133,21 @@ class Select extends InputField
 
         return $this;
     }
+
+
+    public function iconClass($class = "left") {
+        $this->icon_class = $class. " circle";
+        return $this;
+    }
+
+    public function left () {
+        $this->icon_class = "left circle";
+        return $this;
+    }
+
+    public function right () {
+        $this->icon_class = "right circle";
+        return $this;
+    }
+
 }

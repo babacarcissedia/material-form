@@ -183,9 +183,9 @@ class MaterialForm
         return $submit;
     }
 
-    public function select($label, $name, $options = [])
+    public function select($label, $name, $options = [], $icons = [])
     {
-        $select = new Select($label, $name, $options);
+        $select = new Select($label, $name, $options, $icons);
 
         $selected = $this->getValueFor($name);
         $select->select($selected);
