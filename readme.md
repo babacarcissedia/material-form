@@ -195,7 +195,7 @@ Essentially, this takes code that would normally look like this:
 
 ```php
 <div class="input-field">
-  <input type="text" id="first_name" data-error="{!! $errors->first('first_name')">
+  <input type="text" id="first_name" data-error="{!! $errors->first('first_name')"/>
   <label for="first_name">First Name</label>
 </div>
 ```
