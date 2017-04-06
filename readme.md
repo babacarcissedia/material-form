@@ -9,10 +9,8 @@ Boring name for a boring package. Builds form HTML with a fluent-ish, hopefully 
 - [Installation](#installation)
 - [Basic Usage](#basic-usage)
 - [Using material icons](#using-material-icons)
-- [Remembering Old Input](#remembering-old-input)
-- [Error Messages](#error-messages)
-- [CSRF Protection](#csrf-protection)
-- [Data Binding](#data-binding)
+- [Automatic Validation State](#automatic-validation-state)
+- [Model Binding](#model-binding)
 - [Advance usages](#advance-usages)
 - [Licence](#licence)
 
@@ -34,18 +32,18 @@ To do so, just update the `providers` array in your `config/app.php`:
 
 ```php
 'providers' => [
-        //...
-        'bcdbuddy\MaterialForm\ServiceProvider'
-    ],
+    //...
+    'bcdbuddy\MaterialForm\ServiceProvider'
+],
 ```
 
 You can also choose to use the Facade by adding an alias in `config/app.php`:
 
 ```php
 'aliases' => [
-        //...
-        'MaterialForm' => 'bcdbuddy\MaterialForm\Facades\MaterialForm',
-    ],
+    //...
+    'MaterialForm' => 'bcdbuddy\MaterialForm\Facades\MaterialForm',
+],
 ```
 
 You can now start using MaterialForms by calling methods directly on the `MaterialForm` facade:
@@ -87,7 +85,7 @@ MaterialForms lets you create a label and form control and wrap it all in a form
 //    </div>
 //  </form>
 {!! MaterialForm::open() !!}
-{!! MaterialForm::text('Field Label', 'field_name') !!}
+    {!! MaterialForm::text('Field Label', 'field_name') !!}
 {!! MaterialForm::close() !!}
 ```
 
@@ -146,11 +144,9 @@ MaterialForm::close()
 ```
 
 
-For more information about what's possible, check out the documentation for [my basic Form package.](https://github.com/bcdbuddy/form)
-
 ### Reduced Boilerplate
 
-Typical Bootstrap form boilerplate might look something like this:
+Typical Materialize form boilerplate might look something like this:
 
 ```html
 <form>
@@ -213,7 +209,7 @@ And reduces it to this:
 ...with the `data-error` class being added automatically if there is an error in the session.
 
 
-#### Model Binding
+### Model Binding
 
 MaterialForms makes it easy to bind an object to a form to provide default values. Read more about it [here](https://github.com/bcdbuddy/form#model-binding).
 
@@ -226,20 +222,20 @@ MaterialForm::close()
 ## Advance usages
 ```php
 {!! MaterialForm::open() !!}
-		{!! MaterialForm::text("Last name", "last_name")->data("length", 10) !!}
-		{!! MaterialForm::email("Email", "email") !!}
-		{!! MaterialForm::password("Password", "password") !!}
-		{!! MaterialForm::file("File", "file")->placeholder("some file to upload") !!}
-		{!! MaterialForm::checkbox("Remember", "remember")->checked() !!}
-		{!! MaterialForm::checkbox("HTML", "html")->disabled()->checked() !!}
-		{!! MaterialForm::checkbox("Remember filled-in", "remember filled-in")->addClass("filled-in")->checked() !!}
-		{!! MaterialForm::checkbox("Safe", "safe")->addClass("filled-in")->disabled()->checked() !!}
-		{!! MaterialForm::checkbox("Save", "save")->addClass("filled-in")->disabled()!!}
-		{!! MaterialForm::switchCheck("On", "Off", "state") !!}
-		{!! MaterialForm::select("One Select", "one_select", ["1", "2", "5", "10"]) !!}
-		{!! MaterialForm::select("One icon Select", "one_icon_select", ["1", "2", "5", "10"], ["http://lorempicsum.com/futurama/350/200/1", "http://lorempicsum.com/futurama/350/200/2", "http://lorempicsum.com/futurama/350/200/5", "http://lorempicsum.com/futurama/350/200/6"])->left() !!} // or right()
-		{!! MaterialForm::submit("Send")->icon("send") !!}
-		{!! MaterialForm::close() !!}
+    {!! MaterialForm::text("Last name", "last_name")->data("length", 10) !!}
+    {!! MaterialForm::email("Email", "email") !!}
+    {!! MaterialForm::password("Password", "password") !!}
+    {!! MaterialForm::file("File", "file")->placeholder("some file to upload") !!}
+    {!! MaterialForm::checkbox("Remember", "remember")->checked() !!}
+    {!! MaterialForm::checkbox("HTML", "html")->disabled()->checked() !!}
+    {!! MaterialForm::checkbox("Remember filled-in", "remember filled-in")->addClass("filled-in")->checked() !!}
+    {!! MaterialForm::checkbox("Safe", "safe")->addClass("filled-in")->disabled()->checked() !!}
+    {!! MaterialForm::checkbox("Save", "save")->addClass("filled-in")->disabled()!!}
+    {!! MaterialForm::switchCheck("On", "Off", "state") !!}
+    {!! MaterialForm::select("One Select", "one_select", ["1", "2", "5", "10"]) !!}
+    {!! MaterialForm::select("One icon Select", "one_icon_select", ["1", "2", "5", "10"], ["http://lorempicsum.com/futurama/350/200/1", "http://lorempicsum.com/futurama/350/200/2", "http://lorempicsum.com/futurama/350/200/5", "http://lorempicsum.com/futurama/350/200/6"])->left() !!} // or right()
+    {!! MaterialForm::submit("Send")->icon("send") !!}
+{!! MaterialForm::close() !!}
 ```
 
 ## Output
@@ -248,7 +244,7 @@ MaterialForm::close()
 
 ## Credits
 
-- [Adam Wathan BootForm](https://github.com/adamwathan/bootforms)
+- [Adam Wathan BootForms](https://github.com/adamwathan/bootforms)
 
 
 ## Licence 
